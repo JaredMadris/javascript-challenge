@@ -1,12 +1,11 @@
-// from data.js
+// From data.js
 var tableData = data;
 
-// YOUR CODE HERE!
-// select tbody 
+// Select tbody 
 tbody = d3.select("tbody")
 console.log("hello")
 
-// loop through table using pbject entries
+// Loop through table
 function displayData(something){ 
     tbody.text("")
     something.forEach(function(et_sighting){
@@ -21,13 +20,13 @@ displayData(tableData)
 console.log("hello2")
 
 
-// Select the submit button
+// Submit button
 var submit = d3.select("#submit");
 
 submit.on("click", function() {
     console.log("hello3")
 
-  // Prevent the page from refreshing
+  // Prevent page from refreshing
   d3.event.preventDefault();
 
   // Select the input element and get the raw HTML node
@@ -37,14 +36,14 @@ submit.on("click", function() {
   var countryInput = d3.select("#country");
   var shapeInput = d3.select("#shape");
 
-  // Get the value property of the input element
+  // Value property of the input element
   console.log(dateInput.property("value"));
   console.log(cityInput.property("value"));
   console.log(stateInput.property("value"));
   console.log(countryInput.property("value"));
   console.log(shapeInput.property("value"));
 
-  //create a variable which filters the table if a user enters only some information in so that it will still work
+  //Create variable filters
 
  var filtered = tableData.filter(et_sighting =>{
   return (et_sighting.datetime===dateInput.property("value") || !dateInput.property("value") ) && 
@@ -54,7 +53,7 @@ submit.on("click", function() {
             (et_sighting.shape===shapeInput.property("value") || !shapeInput.property("value"))
  })
 
- //run the filtered entries through the displayData function to update the table
+ //Runfiltered entries through displayData function to update the table
  displayData(filtered);
 
 
